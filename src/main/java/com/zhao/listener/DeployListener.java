@@ -6,18 +6,20 @@ import java.io.IOException;
 
 import com.zhao.global.Constant;
 import com.zhao.util.CmdUtils;
+import com.zhao.util.HttpUtils;
 import com.zhao.view.MainFrame;
 
 public class DeployListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
-		final String cmd = "cmd /c npx hexo d";
+		final String cmd = "cmd /c npx hexo d -g";
 		new Thread(new Runnable() {
 			public void run() {
 				try {
 					MainFrame.btnDeploy.setEnabled(false);
 					MainFrame.displayArea.append("请等待...\n");
 					CmdUtils.exec(cmd);
+					HttpUtils.doPost();
 					MainFrame.displayArea.append("success...\n");
 					MainFrame.btnDeploy.setEnabled(true);
 				} catch (NullPointerException exception) {

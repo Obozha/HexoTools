@@ -72,7 +72,7 @@ public class MainFrame {
 		// button
 		btnChooseFilePath = new JButton("选择博客位置");
 		btnGenerate = new JButton("打包");
-		btnDeploy = new JButton("部署");
+		btnDeploy = new JButton("打包&部署&更新");
 		btnHelp = new JButton("使用说明");
 		btnOpenBlog = new JButton("打开博客目录");
 		btnOpenServerByLocal = new JButton("打开本地调试");
