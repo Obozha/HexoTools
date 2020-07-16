@@ -1,14 +1,3 @@
----
-title: Hexo自动化工具
-date: 2020-06-27 20:15:12
-tags: [java,hexo]
-description: 为了偷懒，做了gui来简化操作
-categories: hexo
-feature: 
-toc: true
----
-
-
 ## hexo自动化工具
 
 为了解决hexo每次写文章都需要输一堆命令，写文章的时候需要手动创建以及添加配置，以及gitee更新还需要登录账号这好多步骤的操作，于是想要把所有的操作集中到一个GUI的工具执行
