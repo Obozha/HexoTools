@@ -21,11 +21,9 @@ toc: true
 
 1. 首先搭建java的开发环境  
 2. 然后下载源码开发的IDE --> eclipse，使用maven工程导入
-3. 在gitee设置好自己的私人令牌，拿到token填写到程序中。  
-4. 导出jar包到桌面，方便以后每次使用
+3. 在gitee设置好自己的私人令牌，拿到token填写到程序中。
 
-位置是`/AutoHexo_maven/src/main/java/com/zhao/util/HttpUtils.java`  
-
+> 位置是`/AutoHexo_maven/src/main/java/com/zhao/util/HttpUtils.java`
 > 注意整个过程需要联网，需要配合maven下载对应的jar包。
 
 ### 环境准备
@@ -40,5 +38,4 @@ toc: true
 
 修复了hexo d命令中的io堵塞问题，并采用了powershell的jar包  
 修复了帮助中的说明
-修复了README.md  
-修复了创建文章乱码问题
+修复了README.md

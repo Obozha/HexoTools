@@ -18,7 +18,7 @@ public class DeployListener implements ActionListener {
 				try {
 					MainFrame.btnDeploy.setEnabled(false);
 					MainFrame.displayArea.append("请等待...\n");
-					CmdUtils.exec(cmd);
+					CmdUtils.nioExec();
 					HttpUtils.doPost();
 					MainFrame.displayArea.append("success...\n");
 					MainFrame.btnDeploy.setEnabled(true);
@@ -27,8 +27,6 @@ public class DeployListener implements ActionListener {
 					if (Constant.blogPath == null) {
 						MainFrame.displayArea.append("还未设置博客路径...\n");
 					}
-				} catch (IOException e2) {
-					MainFrame.displayArea.append("未知异常\n");
 				} finally {
 					MainFrame.displayArea.append(Constant.HORIZENLINE);
 				}

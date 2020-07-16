@@ -70,7 +70,7 @@ public class NewPostListener implements ActionListener {
 				e1.printStackTrace();
 			} finally {
 				try {
-					if (bw != null) {
+					if (bw != null || fw != null) {
 						bw.close();
 						fw.close();
 					}
@@ -83,7 +83,7 @@ public class NewPostListener implements ActionListener {
 	}
 
 	public void write(BufferedWriter bw, String str) throws IOException {
-		bw.write(str.toCharArray());// 写入数据到输出流
+		bw.write(str);// 写入数据到输出流
 		bw.newLine(); // 写入换行符
 		bw.flush(); // 刷新缓冲区
 	}
