@@ -20,13 +20,11 @@ public class ServerThread extends Thread{
 			MainFrame.displayArea.append("success...\n");
 		} catch (NullPointerException exception) {
 			exception.printStackTrace();
-			if (Constant.blogPath == null) {
-				MainFrame.displayArea.append("还未设置博客路径...\n");
-			}
+			MainFrame.displayArea.append(exception.toString());
 		} catch (IOException e2) {
 			MainFrame.displayArea.append("未知异常\n");
 		}finally {
-			MainFrame.displayArea.append(Constant.HORIZENLINE);
+			MainFrame.displayArea.append("端口4000已经关闭！\n");
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.zhao.listener;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class DeployListener implements ActionListener {
 					MainFrame.btnDeploy.setEnabled(false);
 					MainFrame.displayArea.append("请等待...\n");
 					CmdUtils.nioExec();
-					HttpUtils.doPost();
-					MainFrame.displayArea.append("success...\n");
+					// HttpUtils.doPost(); gitee接口消失,暂时取消此操作
+					MainFrame.displayArea.append("Success...\n");
 					MainFrame.btnDeploy.setEnabled(true);
 				} catch (NullPointerException exception) {
 					exception.printStackTrace();

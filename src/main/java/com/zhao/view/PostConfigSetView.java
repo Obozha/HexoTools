@@ -68,7 +68,7 @@ public class PostConfigSetView extends JFrame {
 	}
 
 	public void setPostConfigSetView() {
-		requestFocus();
+		// requestFocus();
 		
 		setBounds(10, 10, 300, 400);
 		setVisible(true);

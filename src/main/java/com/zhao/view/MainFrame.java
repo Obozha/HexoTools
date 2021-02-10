@@ -1,6 +1,7 @@
 package com.zhao.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -11,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.Console;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -50,7 +52,7 @@ public class MainFrame {
 	public static JLabel labelStatus;
 
 	JPanel northPanel;
-	JPanel southPanel;
+	JPanel centerPanel;
 
 	JScrollPane scrollPane;
 
@@ -61,7 +63,6 @@ public class MainFrame {
 		setComponent();
 		setMainWorkSpace();
 		setPanel();
-
 		setListener();
 	}
 
@@ -72,17 +73,17 @@ public class MainFrame {
 		// button
 		btnChooseFilePath = new JButton("选择博客位置");
 		btnGenerate = new JButton("打包");
-		btnDeploy = new JButton("打包&部署&更新");
-		btnHelp = new JButton("使用说明");
 		btnOpenBlog = new JButton("打开博客目录");
+		btnNewPost = new JButton("新建文章");
+		btnDeploy = new JButton("打包&部署&更新");
+		btnUpdate=new JButton("gitee更新");
+		btnHelp = new JButton("使用说明");
 		btnOpenServerByLocal = new JButton("打开本地调试");
 		btnCloseServer = new JButton("关闭本地调试");
-		btnNewPost = new JButton("新建文章");
 		btnBlogHelp = new JButton("博客常用命令提示");
-		btnUpdate=new JButton("gitee更新");
 		
 		northPanel = new JPanel();
-		southPanel = new JPanel();
+		centerPanel = new JPanel();
 
 		labelStatus = new JLabel();
 
@@ -102,40 +103,60 @@ public class MainFrame {
 		displayArea.setLineWrap(true);
 		displayArea.setFont(new Font("宋体", Font.BOLD, 20));
 		displayArea.setEditable(false);
-
+		displayArea.setBackground(Constant.displayAreaDefaultBgColor);
+		displayArea.setForeground(Constant.displayAreaDefaultFontColor);
+		
 		labelStatus.setFont(new Font("宋体", Font.BOLD, 20));
 		labelStatus.setText("状态：---");
 	}
 
 	public void setMainWorkSpace() {
 		mainWorkSpace.setVisible(true);
-		mainWorkSpace.setBounds(100, 100, Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
+		mainWorkSpace.setBounds(100, 100, Constant.MainWorkSpaceWidth+10, Constant.MainWorkSpaceHeight);
 		mainWorkSpace.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainWorkSpace.setResizable(false);
 		mainWorkSpace.setLayout(new BorderLayout());
 	}
 
 	public void setPanel() {
-		northPanel.setSize(Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
-		northPanel.setLayout(new GridLayout(2, 5, 10, 10));
-		northPanel.add(btnChooseFilePath);
-		northPanel.add(btnOpenBlog);
-		northPanel.add(btnGenerate);
-		northPanel.add(btnDeploy);
-		northPanel.add(btnOpenServerByLocal);
-		northPanel.add(btnCloseServer);
-		northPanel.add(btnNewPost);
-		northPanel.add(btnBlogHelp);
-		northPanel.add(btnHelp);
-		northPanel.add(btnUpdate);
+		JPanel debugPanel=new JPanel();
+		JPanel blogDirPanel=new JPanel();
+		JPanel processPanel=new JPanel();
+		JPanel instructionPanel=new JPanel();
 		
-		southPanel.setSize(Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
+		debugPanel.setBorder(BorderFactory.createTitledBorder("调试"));
+		debugPanel.add(btnOpenServerByLocal);
+		debugPanel.add(btnCloseServer);
+		
+		blogDirPanel.setBorder(BorderFactory.createTitledBorder("目录"));
+		blogDirPanel.add(btnChooseFilePath);
+		blogDirPanel.add(btnOpenBlog);
+		
+		processPanel.setBorder(BorderFactory.createTitledBorder("流程"));
+		processPanel.add(btnNewPost);
+		processPanel.add(btnDeploy);
+
+		instructionPanel.setBorder(BorderFactory.createTitledBorder("说明"));
+		instructionPanel.add(btnBlogHelp);
+		instructionPanel.add(btnHelp);
+		
+		northPanel.add(debugPanel);
+		northPanel.add(blogDirPanel);
+		northPanel.add(processPanel);
+		northPanel.add(instructionPanel);
+		
+		northPanel.setSize(Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
+		northPanel.setLayout(new GridLayout(1, 4, 3, 10));
+//		northPanel.add(btnBlogHelp);
+//		northPanel.add(btnHelp);
+		
+		
+		centerPanel.setSize(Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
 		scrollPane.setSize(Constant.MainWorkSpaceWidth, Constant.MainWorkSpaceHeight);
-		southPanel.add(scrollPane);
-		southPanel.setLayout(new FlowLayout());
+		centerPanel.add(scrollPane);
 
 		mainWorkSpace.add(northPanel, BorderLayout.NORTH);
-		mainWorkSpace.add(southPanel, BorderLayout.CENTER);
+		mainWorkSpace.add(centerPanel, BorderLayout.CENTER);
 		mainWorkSpace.add(labelStatus, BorderLayout.SOUTH);
 	}
 

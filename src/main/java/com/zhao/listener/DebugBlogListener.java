@@ -26,14 +26,16 @@ public class DebugBlogListener implements ActionListener {
 			sThread.start();
 		} else {
 			try {
-				if (!sThread.isInterrupted()) {
-					sThread.interrupt();
+				// 修复sThread为null的时候报的空指针
+				if(sThread!=null) {
+					if (!sThread.isInterrupted()) {
+						sThread.interrupt();
+					}
 				}
 				CmdUtils.exec("cmd /c taskkill /f /t /im node.exe");
 				MainFrame.btnOpenServerByLocal.setEnabled(true);
 				MainFrame.labelStatus.setText( "状态：已关闭本地调试");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
